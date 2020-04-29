@@ -22,7 +22,6 @@ spec:
       containers:
       - name: maven-container
         image: index.docker.io/ramagcpgrafana/mavenapplication
-        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         readinessProbe:
