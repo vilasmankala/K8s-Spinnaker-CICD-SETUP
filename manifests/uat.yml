@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: maven-container
-        image: index.docker.io/tusharstudy2020/webappimages
+        image: index.docker.io/ramagcpgrafana/mavenapplication
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
