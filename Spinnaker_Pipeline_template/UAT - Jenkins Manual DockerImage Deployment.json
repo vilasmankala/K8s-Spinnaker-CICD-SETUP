@@ -1,0 +1,49 @@
+{
+  "expectedArtifacts": [],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "stages": [
+    {
+      "account": "kubernetes-admin",
+      "cloudProvider": "kubernetes",
+      "manifestArtifact": {
+        "artifactAccount": "my-github-artifact-account",
+        "id": "afba1a31-a361-4dc3-9799-47c2e0fe46f4",
+        "name": "manifests/manual-uat.yml",
+        "reference": "https://api.github.com/repos/ramagcpgrafana/webapp/contents/manifests/manual-uat.yml",
+        "type": "github/file"
+      },
+      "moniker": {
+        "app": "mavenapplication"
+      },
+      "name": "Deploy (Manifest)",
+      "refId": "3",
+      "requisiteStageRefIds": [],
+      "skipExpressionEvaluation": false,
+      "source": "artifact",
+      "trafficManagement": {
+        "enabled": true,
+        "options": {
+          "enableTraffic": true,
+          "namespace": "uat",
+          "services": [
+            "service maven-demo"
+          ],
+          "strategy": "highlander"
+        }
+      },
+      "type": "deployManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "enabled": true,
+      "job": "UAT Manual Docker Image Deployment",
+      "master": "my-jenkins-master",
+      "propertyFile": "build.properties",
+      "type": "jenkins"
+    }
+  ],
+  "updateTs": "1588243747000"
+}

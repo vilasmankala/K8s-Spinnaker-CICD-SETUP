@@ -1,0 +1,72 @@
+{
+  "expectedArtifacts": [
+    {
+      "defaultArtifact": {
+        "customKind": true,
+        "id": "49ae30df-eca2-4a6a-9a88-4aaa90eea100"
+      },
+      "displayName": "honest-moose-25",
+      "id": "bb5d75a5-f575-48f8-a967-fd86ffa756d2",
+      "matchArtifact": {
+        "artifactAccount": "docker-registry",
+        "id": "84101023-bcc2-4d96-ad41-a065ff7f5e6b",
+        "name": "index.docker.io/ramagcpgrafana/mavenapplication",
+        "type": "docker/image"
+      },
+      "useDefaultArtifact": false,
+      "usePriorArtifact": true
+    }
+  ],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "account": "kubernetes-admin",
+      "cloudProvider": "kubernetes",
+      "manifestArtifact": {
+        "artifactAccount": "my-github-artifact-account",
+        "id": "09b16146-eb7b-4c34-a320-3f4acabfa23b",
+        "name": "manifests/uat.yml",
+        "reference": "https://api.github.com/repos/ramagcpgrafana/webapp/contents/manifests/uat.yml",
+        "type": "github/file"
+      },
+      "moniker": {
+        "app": "mavenapplication"
+      },
+      "name": "Deploy (Manifest)",
+      "refId": "1",
+      "requisiteStageRefIds": [],
+      "skipExpressionEvaluation": false,
+      "source": "artifact",
+      "trafficManagement": {
+        "enabled": true,
+        "options": {
+          "enableTraffic": true,
+          "namespace": "uat",
+          "services": [
+            "service maven-demo"
+          ],
+          "strategy": "highlander"
+        }
+      },
+      "type": "deployManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "application": "mavenapplication",
+      "enabled": true,
+      "expectedArtifactIds": [
+        "bb5d75a5-f575-48f8-a967-fd86ffa756d2"
+      ],
+      "pipeline": "293adc69-d0f2-4ce4-ae44-c490f34086a9",
+      "status": [
+        "successful"
+      ],
+      "type": "pipeline"
+    }
+  ],
+  "updateTs": "1588243922000"
+}

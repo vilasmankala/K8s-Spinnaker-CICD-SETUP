@@ -1,0 +1,65 @@
+{
+  "expectedArtifacts": [
+    {
+      "defaultArtifact": {
+        "customKind": true,
+        "id": "951a96b2-98de-4c44-97bb-0aa257ebb70a"
+      },
+      "displayName": "friendly-bear-43",
+      "id": "155f8dd7-7bfc-42c6-af0d-15ec628c3771",
+      "matchArtifact": {
+        "artifactAccount": "my-github-artifact-account",
+        "customKind": true,
+        "id": "a5b8b48a-eaac-4649-9aa7-e04c2695050b",
+        "name": "manifests/uat.yml",
+        "type": "github/file"
+      },
+      "useDefaultArtifact": false,
+      "usePriorArtifact": true
+    }
+  ],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "account": "kubernetes-admin",
+      "cloudProvider": "kubernetes",
+      "manifestArtifactId": "155f8dd7-7bfc-42c6-af0d-15ec628c3771",
+      "moniker": {
+        "app": "mavenapplication"
+      },
+      "name": "Deploy (Manifest)",
+      "refId": "1",
+      "requisiteStageRefIds": [],
+      "skipExpressionEvaluation": false,
+      "source": "artifact",
+      "trafficManagement": {
+        "enabled": true,
+        "options": {
+          "enableTraffic": true,
+          "namespace": "uat",
+          "services": [
+            "service maven-demo"
+          ],
+          "strategy": "highlander"
+        }
+      },
+      "type": "deployManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "enabled": true,
+      "expectedArtifactIds": [
+        "155f8dd7-7bfc-42c6-af0d-15ec628c3771"
+      ],
+      "project": "ramagcpgrafana",
+      "slug": "webapp",
+      "source": "github",
+      "type": "git"
+    }
+  ],
+  "updateTs": "1588242196000"
+}

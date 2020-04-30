@@ -1,0 +1,71 @@
+{
+  "expectedArtifacts": [
+    {
+      "defaultArtifact": {
+        "customKind": true,
+        "id": "66b974e8-c54c-41c2-b36e-6b68df755969"
+      },
+      "displayName": "witty-mayfly-58",
+      "id": "895b664a-5006-4a71-a428-fb6e5eaf1473",
+      "matchArtifact": {
+        "artifactAccount": "docker-registry",
+        "id": "23cf42bc-c8fb-49d8-b917-33523290088b",
+        "name": "index.docker.io/ramagcpgrafana/mavenapplication",
+        "type": "docker/image"
+      },
+      "useDefaultArtifact": false,
+      "usePriorArtifact": true
+    }
+  ],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "account": "kubernetes-admin",
+      "cloudProvider": "kubernetes",
+      "manifestArtifact": {
+        "artifactAccount": "my-github-artifact-account",
+        "id": "09b16146-eb7b-4c34-a320-3f4acabfa23b",
+        "name": "manifests/dev.yml",
+        "reference": "https://api.github.com/repos/ramagcpgrafana/webapp/contents/manifests/dev.yml",
+        "type": "github/file"
+      },
+      "moniker": {
+        "app": "mavenapplication"
+      },
+      "name": "Deploy (Manifest)",
+      "refId": "1",
+      "requisiteStageRefIds": [],
+      "skipExpressionEvaluation": false,
+      "source": "artifact",
+      "trafficManagement": {
+        "enabled": true,
+        "options": {
+          "enableTraffic": true,
+          "namespace": "dev",
+          "services": [
+            "service maven-demo"
+          ],
+          "strategy": "highlander"
+        }
+      },
+      "type": "deployManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "account": "my-docker-registry-1",
+      "enabled": true,
+      "expectedArtifactIds": [
+        "895b664a-5006-4a71-a428-fb6e5eaf1473"
+      ],
+      "organization": "ramagcpgrafana",
+      "registry": "index.docker.io",
+      "repository": "ramagcpgrafana/mavenapplication",
+      "type": "docker"
+    }
+  ],
+  "updateTs": "1588242394000"
+}

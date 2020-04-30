@@ -1,0 +1,65 @@
+{
+  "expectedArtifacts": [
+    {
+      "defaultArtifact": {
+        "customKind": true,
+        "id": "5b7926d2-7f27-48a4-b034-33bc5b44290c"
+      },
+      "displayName": "black-husky-36",
+      "id": "31e6cb48-55c5-4d2b-8ba6-392145d8ef04",
+      "matchArtifact": {
+        "artifactAccount": "my-github-artifact-account",
+        "customKind": true,
+        "id": "8f6f285c-f7d7-4e86-89e5-6def218e9635",
+        "name": "manifests/dev.yml",
+        "type": "github/file"
+      },
+      "useDefaultArtifact": false,
+      "usePriorArtifact": true
+    }
+  ],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "account": "kubernetes-admin",
+      "cloudProvider": "kubernetes",
+      "manifestArtifactId": "31e6cb48-55c5-4d2b-8ba6-392145d8ef04",
+      "moniker": {
+        "app": "mavenapplication"
+      },
+      "name": "Deploy (Manifest)",
+      "refId": "1",
+      "requisiteStageRefIds": [],
+      "skipExpressionEvaluation": false,
+      "source": "artifact",
+      "trafficManagement": {
+        "enabled": true,
+        "options": {
+          "enableTraffic": true,
+          "namespace": "dev",
+          "services": [
+            "service maven-demo"
+          ],
+          "strategy": "highlander"
+        }
+      },
+      "type": "deployManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "enabled": true,
+      "expectedArtifactIds": [
+        "31e6cb48-55c5-4d2b-8ba6-392145d8ef04"
+      ],
+      "project": "ramagcpgrafana",
+      "slug": "webapp",
+      "source": "github",
+      "type": "git"
+    }
+  ],
+  "updateTs": "1588242240000"
+}
