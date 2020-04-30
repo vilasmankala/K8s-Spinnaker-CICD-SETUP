@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: maven-container
-        image: 'index.docker.io/ramagcpgrafana/mavenapplication:${ #stage('Configuration')['context']['TAG'] }'
+        image: index.docker.io/ramagcpgrafana/mavenapplication:${TAG}
         ports:
         - containerPort: 8080
         readinessProbe:
